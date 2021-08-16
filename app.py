@@ -33,6 +33,8 @@ def predict():
         y_pred = [[sepal_length,sepal_width,petal_length,petal_width]]
         model = pickle.load(open('dt_model.pkl', 'rb'))
         prediction=model.predict(y_pred)
+        categories = ['iris-setosa','iris-versicolor','iris-virginica']
+        prediction = categories[prediction[0]]
         return render_template('index.html',prediction_text="The type of Iris flower is : {}".format(prediction))
     return render_template("index.html")
     
